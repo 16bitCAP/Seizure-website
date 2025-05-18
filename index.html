@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seizure website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #121212;
+      padding: 0px;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      background-color: #222;
+      padding: 15px 10px;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
+
+    timer-button {
+      width: 60px;
+      height: 60px;
+      background-color: #444;
+      border: none;
+      border-radius: 8px;
+      font-size: 2em;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    timer-button:hover {
+      background-color: #666;
+      transform: scale(1.05);
+    }
+
+    #timer {
+      min-width: 180px;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      font-size: 1.5em;
+      color: #fff;
+    }
+
+    /* Popup style */
+    #popupOverlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(200, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #popupBox {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+    }
+
+    #closeBtn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: bold;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background-color 0.3s;
+    }
+
+    #closeBtn:hover {
+      background-color: #e60000;
+    }
+
+    .boxes-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .container1 {
+    position: absolute;
+      top: 5%;
+      bottom: 45%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      padding: 10px;
+      background-color: rgba(200, 200, 200, 0.07); /* Slightly lighter dark container */
+      border-radius: 12px;
+      box-shadow: 0 15px 12px rgba(0, 0, 0, 0.5);
+      width: 85%;
+      max-width: 10000px;
+  }
+  
+  .container2 {
+    position: absolute;
+    top: 60%;
+    bottom: 15%;
+    width: 85%;
+    max-width: 10000px;
+    text-align: center;
+    background: rgba(200, 200, 200, 0.07);
+    border-radius: 12px;
+    box-shadow: 0 15px 12px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+  }
+
+    h1 {
+      margin-bottom: 20px;
+      margin-top: 6px;
+      margin-left: 0px;
+      color: white;
+      font-size: 24px;
+      font: bold;
+    }
+    
+
+    h2 {
+      margin-bottom: 16px;
+      color: white;
+      font-size: 0.8em;
+    }
+
+    a {
+      display: inline-block;
+      margin: 5px 10px;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      background-color: rgba(200, 200, 200, 0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 6px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #content {
+      transition: filter 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="content" class="boxes-wrapper">
+    <!--Box 1-->
+    <div class="container1">
+      <h1><b>Hello, im BOB</b></h1>
+      <h2>1st - Stay on this page, so it can time it correctaly (trying to see if i can fix this)</h2>
+      <h2>2nd line - if your going to use this, look at the iphone view</h2>
+      <h2>3rd line-</h2>
+      <h1><b>Extra (can delete this subtitle)</b></h1>
+      <h2>hi - overflow effect - 000000000000000000000000000000000000000000000000000000000000000000000</h2>
+      
+    </div>
+
+    <!--Box 2-->
+    <div class="container2">
+      <h1><b>Call my Parents</b></h1>
+      <a href="tel:1111111111">Call Dad</a>
+      <a href="tel:2222222222">Call Mom</a>
+      
+    </div>
+  </div>
+
+  <div class="footer">
+    <timer-button id="pauseBtn" title="Pause/Resume">❙❙</timer-button>
+    <div id="timer">00:00:00.000</div>
+    <timer-button id="resetBtn" title="Reset">⟲</timer-button>
+  </div>
+
+  
+  <div id="popupOverlay">
+    <div id="popupBox">
+      <p>If the person is still having a seizure, please put the medication into their mouth and call 911.</p>
+      <button id="closeBtn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    let timerInterval = null;
+    let totalMilliseconds = 0;
+    let isPaused = false;
+    const alertThreshold = 300000; // THIS IS THE TIME TO THE ALERT - change it to really big if you dont want it
+    const timerDisplay = document.getElementById('timer');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const content = document.getElementById('content');
+    const closeBtn = document.getElementById('closeBtn');
+    let popupShown = false; 
+
+    function formatTime(ms) {
+      const minutes = Math.floor(ms / 60000);
+      const seconds = Math.floor((ms % 60000) / 1000);
+      const milliseconds = ms % 1000;
+      const pad = (num, size) => String(num).padStart(size, '0');
+      return `${pad(minutes, 2)}:${pad(seconds, 2)}.${pad(milliseconds, 3)}`;
+    }
+
+    function updateDisplay() {
+      timerDisplay.textContent = formatTime(totalMilliseconds);
+      if (totalMilliseconds >= alertThreshold && !popupShown) {
+        showPopup();
+        popupShown = true; 
+      }
+    }
+
+    function showPopup() {
+      popupOverlay.style.display = 'flex';
+      content.style.filter = 'blur(5px)';
+    }
+
+    function hidePopup() {
+      popupOverlay.style.display = 'none';
+      content.style.filter = 'none';
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (!isPaused) {
+          totalMilliseconds += 10;
+          updateDisplay();
+        }
+      }, 10);
+    }
+
+    pauseBtn.addEventListener('click', () => {
+      isPaused = !isPaused;
+    });
+
+    resetBtn.addEventListener('click', () => {
+      totalMilliseconds = 0;
+      updateDisplay();
+      hidePopup();
+      popupShown = false; // Reset popup state
+      if (isPaused) {
+        isPaused = false;
+      }
+    });
+
+    closeBtn.addEventListener('click', () => {
+      hidePopup();
+    });
+
+    window.onload = () => {
+      startTimer();
+    };
+  </script>
+</body>
+</html>
