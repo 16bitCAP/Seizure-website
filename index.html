@@ -23,9 +23,23 @@
       background-color: #222;
       padding: 15px 10px;
       box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 998;
+    }
+    
+    /* Please Leave This */
+    .credit {
+      position: fixed;      
+      right: -03px;
+      bottom: -11px;
+      font-size: 0.7em;
+      color: #aaa;
+      white-space: nowrap;
+      user-select: none;
+      padding: 6px 10px;    
+      background: transparent;
       z-index: 999;
     }
-
+    
     timer-button {
       width: 60px;
       height: 60px;
@@ -106,14 +120,14 @@
     }
 
     .container1 {
-    position: absolute;
+      position: absolute;
       top: 5%;
       bottom: 45%;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
       padding: 10px;
-      background-color: rgba(200, 200, 200, 0.07); /* Slightly lighter dark container */
+      background-color: rgba(200, 200, 200, 0.07);
       border-radius: 12px;
       box-shadow: 0 15px 12px rgba(0, 0, 0, 0.5);
       width: 85%;
@@ -148,8 +162,17 @@
       color: white;
       font-size: 0.8em;
     }
-
+    
     a {
+      color: green;
+      font-size: 1.05em;
+    }
+   
+    p {
+      font-size: 1.03em;
+    }
+
+    call {
       display: inline-block;
       margin: 5px 10px;
       padding: 12px 20px;
@@ -161,7 +184,7 @@
       transition: 0.3s;
     }
 
-    a:hover {
+    call:hover {
       background-color: rgba(200, 200, 200, 0.2);
       transform: translateY(-5px);
       box-shadow: 0 6px 4px rgba(0, 0, 0, 0.1);
@@ -177,20 +200,20 @@
   <div id="content" class="boxes-wrapper">
     <!--Box 1-->
     <div class="container1">
-      <h1><b>Hello, im BOB</b></h1>
+      <h1><b>Hello, im Billy</b></h1>
       <h2>1st - Stay on this page, so it can time it correctaly (trying to see if i can fix this)</h2>
-      <h2>2nd line - if your going to use this, look at the iphone view</h2>
-      <h2>3rd line-</h2>
+      <h2>if your going to use this, look at the iphone view - you can make things seperate lines or type on the same line</h2>
+      <h2>my name is billy, im epileptic and if you scaned the QR sticker, you think that im having a seizure. Im fine, but if my seizure lasts more that 5 mins, when the alert pops up, please do what it says to help.</h2>
       <h1><b>Extra (can delete this subtitle)</b></h1>
-      <h2>hi - overflow effect - 000000000000000000000000000000000000000000000000000000000000000000000</h2>
+      <h2>hi - overflow effect - 000000000 000000000000000000000 0000000000000000000000 0000000000000000000000000000000000 00000000000000000 00000000000000000 00000000000000000 00000000000000000 00000000000000000 00000000000000000 00000000000000000</h2>
       
     </div>
 
     <!--Box 2-->
     <div class="container2">
       <h1><b>Call my Parents</b></h1>
-      <a href="tel:1111111111">Call Dad</a>
-      <a href="tel:2222222222">Call Mom</a>
+      <call href="tel:1111111111">Call Dad</call>
+      <call href="tel:2222222222">Call Mom</call>
       
     </div>
   </div>
@@ -200,7 +223,11 @@
     <div id="timer">00:00:00.000</div>
     <timer-button id="resetBtn" title="Reset">⟲</timer-button>
   </div>
-
+  <!--Please Leave This-->
+    <div class="credit">
+       <p>Made Using <a href="https://github.com/16bitcap/seizure-website">This</a></p>
+       
+    </div>
   
   <div id="popupOverlay">
     <div id="popupBox">
